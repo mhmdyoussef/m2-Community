@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--
+  ~ MY-Dev
+  ~ @category    MY-Dev
+  ~ @copyright   Copyright (c) 2023. MY-Dev (https://www.my-dev.pro/)
+  ~ @license     http://www.my-dev.pro/license-agreement.html
+  ~ @Author: Mohamed Youssef<mydevpro1@gmail.com>
+  -->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="community_post_types" resource="default" engine="innodb" comment="Community Post User Types">
+        <column xsi:type="tinyint" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="varchar" name="post_type_name" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_POST_TYPES_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_favourite_consultant" resource="default" engine="innodb"
+           comment="Community Favourite Consultant posts">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="user_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="consultant_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false"/>
+        <constraint xsi:type="foreign" referenceId="FAVOURITE_CONSULTANT_CONSULTANT_ID_CONSULTANT_ENTITY_ID" table="community_favourite_consultant" column="consultant_id" referenceTable="community_consultant" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_FAVOURITE_CONSULTANT_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_favourite_posts" resource="default" engine="innodb" comment="Community Favourite Posts">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="user_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="post_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false"/>
+        <constraint xsi:type="foreign" referenceId="FAVOURITE_POSTS_POST_ID_POSTS_ENTITY_ID" table="community_favourite_posts" column="post_id" referenceTable="community_posts" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_FAVOURITE_POSTS_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_room_message" resource="default" engine="innodb" comment="Community Messages">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="room_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="sender_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="receiver_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="text" name="message" nullable="false"/>
+        <column xsi:type="boolean" name="viewed" nullable="false"/>
+        <column xsi:type="boolean" name="status" nullable="false"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false"/>
+        <constraint xsi:type="foreign" referenceId="ROOM_MESSAGE_ROOM_ID_ROOMS_ENTITY_ID" table="community_room_message" column="room_id" referenceTable="community_rooms" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_ROOM_MESSAGE_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_rooms" resource="default" engine="innodb" comment="Community Rooms">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="sender_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="receiver_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_ROOMS_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_consultant" resource="default" engine="innodb" comment="Community consultant users">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="user_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="post_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="varchar" name="title" nullable="false"/>
+        <column xsi:type="text" name="bio" nullable="false"/>
+        <column xsi:type="varchar" name="facebook_href" nullable="false"/>
+        <column xsi:type="varchar" name="twitter_href" nullable="false"/>
+        <column xsi:type="varchar" name="youtube_href" nullable="false"/>
+        <column xsi:type="varchar" name="image_url" nullable="false"/>
+        <column xsi:type="tinyint" name="years_of_experience" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="boolean" name="confirmed" nullable="false"/>
+        <column xsi:type="boolean" name="status" nullable="false"/>
+        <column xsi:type="datetime" name="assigned_at" nullable="false" on_update="false"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" on_update="true"/>
+        <constraint xsi:type="foreign" referenceId="CONSULTANT_POST_ID_POSTS_ENTITY_ID" table="community_consultant" column="post_id" referenceTable="community_posts" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_CONSULTANT_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_category" resource="default" engine="innodb" comment="Community Categories">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="varchar" name="name" nullable="false"/>
+        <column xsi:type="boolean" name="status" nullable="false"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_CATEGORY_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_comments" resource="default" engine="innodb" comment="Community users comments">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="post_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="user_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="boolean" name="status" nullable="false"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" on_update="true"/>
+        <constraint xsi:type="foreign" referenceId="COMMENTS_POST_ID_POSTS_ENTITY_ID" table="community_comments" column="post_id" referenceTable="community_posts" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_COMMENTS_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+    <table name="community_posts" resource="default" engine="innodb" comment="Community Posts">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
+        <column xsi:type="int" name="user_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="varchar" name="subject" nullable="false"/>
+        <column xsi:type="text" name="post" nullable="false" comment="Content of the post"/>
+        <column xsi:type="varchar" name="meta_title" nullable="true" length="255" comment="Page Meta Title"/>
+        <column xsi:type="text" name="meta_keywords" nullable="true" comment="Page Meta Keywords"/>
+        <column xsi:type="text" name="meta_description" nullable="true" comment="Page Meta Description"/>
+        <column xsi:type="varchar" name="featured_image" nullable="true"/>
+        <column xsi:type="tinyint" name="post_type" unsigned="true" nullable="false" identity="false"/>
+        <column xsi:type="boolean" name="status" nullable="false" default="0"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" on_update="false"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" on_update="true"/>
+        <constraint xsi:type="foreign" referenceId="POSTS_POST_TYPE_POST_TYPES_ENTITY_ID" table="community_posts" column="post_type" referenceTable="community_post_types" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="POSTS_CATEGORY_ID_CATEGORY_ENTITY_ID" table="community_posts" column="category_id" referenceTable="community_category" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="COMMUNITY_POSTS_ENTITY_ID" indexType="btree">
+            <column name="entity_id"/>
+        </index>
+    </table>
+</schema>

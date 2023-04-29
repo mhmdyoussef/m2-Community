@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+  ~ MY-Dev
+  ~ @category    MY-Dev
+  ~ @copyright   Copyright (c) 2023. MY-Dev (https://www.my-dev.pro/)
+  ~ @license     http://www.my-dev.pro/license-agreement.html
+  ~ @Author: Mohamed Youssef<mydevpro1@gmail.com>
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="MyDev_Community" setup_version="0.0.1" />
+</config>

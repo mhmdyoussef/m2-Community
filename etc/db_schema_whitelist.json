@@ -1,0 +1,150 @@
+{
+    "community_posts": {
+        "column": {
+            "entity_id": true,
+            "user_id": true,
+            "category_id": true,
+            "subject": true,
+            "post": true,
+            "meta_title": true,
+            "meta_keywords": true,
+            "meta_description": true,
+            "featured_image": true,
+            "post_type": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "COMMUNITY_POSTS_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_comments": {
+        "column": {
+            "entity_id": true,
+            "post_id": true,
+            "user_id": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "COMMUNITY_COMMENTS_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_category": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "status": true,
+            "created_at": true
+        },
+        "index": {
+            "COMMUNITY_CATEGORY_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_consultant": {
+        "column": {
+            "entity_id": true,
+            "user_id": true,
+            "post_id": true,
+            "title": true,
+            "bio": true,
+            "facebook_href": true,
+            "twitter_href": true,
+            "youtube_href": true,
+            "image_url": true,
+            "years_of_experience": true,
+            "status": true,
+            "assigned_at": true,
+            "updated_at": true,
+            "confirmed": true
+        },
+        "index": {
+            "COMMUNITY_CONSULTANT_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_rooms": {
+        "column": {
+            "entity_id": true,
+            "sender_id": true,
+            "receiver_id": true,
+            "created_at": true
+        },
+        "index": {
+            "COMMUNITY_ROOMS_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_room_message": {
+        "column": {
+            "entity_id": true,
+            "sender_id": true,
+            "receiver_id": true,
+            "message": true,
+            "viewed": true,
+            "status": true,
+            "created_at": true
+        },
+        "index": {
+            "COMMUNITY_ROOM_MESSAGE_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_favourite_posts": {
+        "column": {
+            "entity_id": true,
+            "user_id": true,
+            "post_id": true,
+            "created_at": true
+        },
+        "index": {
+            "COMMUNITY_FAVOURITE_POSTS_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_favourite_consultant": {
+        "column": {
+            "entity_id": true,
+            "user_id": true,
+            "consultant_id": true,
+            "created_at": true
+        },
+        "index": {
+            "COMMUNITY_FAVOURITE_CONSULTANT_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "community_post_types": {
+        "column": {
+            "entity_id": true,
+            "post_type_name": true
+        },
+        "index": {
+            "COMMUNITY_POST_TYPES_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
