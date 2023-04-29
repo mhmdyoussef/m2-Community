@@ -129,11 +129,11 @@
         <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"/>
         <column xsi:type="int" name="user_id" unsigned="true" nullable="false" identity="false"/>
         <column xsi:type="int" name="category_id" unsigned="true" nullable="false" identity="false"/>
-        <column xsi:type="varchar" name="subject" nullable="false"/>
+        <column xsi:type="varchar" name="title" nullable="false"/>
         <column xsi:type="text" name="post" nullable="false" comment="Content of the post"/>
-        <column xsi:type="varchar" name="meta_title" nullable="true" length="255" comment="Page Meta Title"/>
-        <column xsi:type="text" name="meta_keywords" nullable="true" comment="Page Meta Keywords"/>
-        <column xsi:type="text" name="meta_description" nullable="true" comment="Page Meta Description"/>
+        <column xsi:type="varchar" name="meta_title" nullable="true" length="255" comment="Post Meta Title"/>
+        <column xsi:type="text" name="meta_keywords" nullable="true" comment="Post Meta Keywords"/>
+        <column xsi:type="text" name="meta_description" nullable="true" comment="Post Meta Description"/>
         <column xsi:type="varchar" name="featured_image" nullable="true"/>
         <column xsi:type="tinyint" name="post_type" unsigned="true" nullable="false" identity="false"/>
         <column xsi:type="boolean" name="status" nullable="false" default="0"/>
@@ -144,8 +144,11 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="entity_id"/>
         </constraint>
-        <index referenceId="COMMUNITY_POSTS_ENTITY_ID" indexType="btree">
+        <index referenceId="COMMUNITY_POSTS_ENTITY_ID_KEYWORDS_DESCRIPTION_META_TITLE" indexType="btree">
             <column name="entity_id"/>
+            <column name="meta_title" />
+            <column name="meta_keywords"/>
+            <column name="meta_description"/>
         </index>
     </table>
 </schema>
