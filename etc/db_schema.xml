@@ -81,9 +81,9 @@
         <column xsi:type="int" name="post_id" unsigned="true" nullable="false" identity="false"/>
         <column xsi:type="varchar" name="title" nullable="false"/>
         <column xsi:type="text" name="bio" nullable="false"/>
-        <column xsi:type="varchar" name="facebook_href" nullable="false"/>
-        <column xsi:type="varchar" name="twitter_href" nullable="false"/>
-        <column xsi:type="varchar" name="youtube_href" nullable="false"/>
+        <column xsi:type="varchar" name="social_href" nullable="false"/>
+        <column xsi:type="varchar" name="social_href" nullable="false"/>
+        <column xsi:type="varchar" name="social_href" nullable="false"/>
         <column xsi:type="varchar" name="image_url" nullable="false"/>
         <column xsi:type="tinyint" name="years_of_experience" unsigned="true" nullable="false" identity="false"/>
         <column xsi:type="boolean" name="confirmed" nullable="false"/>
